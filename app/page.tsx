@@ -1,11 +1,13 @@
-import Image from "next/image";
 import Header from "./ui/landing/header";
+import Hero from "./ui/landing/hero";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-white font-sans">
+    <div className="flex flex-col min-h-screen bg-white font-sans">
       <Header />
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start"></main>
+      <main className="flex flex-col flex-1 w-full">
+        <Hero />
+      </main>
     </div>
   );
 }

@@ -10,6 +10,18 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-primary: #1c3d54; /* Azul Thales */
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #d7a556; /* Dorado ético */
+  --color-secondary-foreground: #1c3d54;
+
+  --color-neutral: #e8edf3; /* Fondo suave */
+  --color-neutral-foreground: #1c3d54;
+
+  --color-complementary: #4ca495; /* Verde humano (opcional) */
+  --color-complementary-foreground: #0b1b23;
 }
 
 @media (prefers-color-scheme: dark) {
