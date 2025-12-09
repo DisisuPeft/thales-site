@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 export function Footer() {
+  // comment to comments
   return (
     <footer className="py-16 px-6" style={{ backgroundColor: "#2A2A2A" }}>
       <div className="container mx-auto max-w-6xl">
