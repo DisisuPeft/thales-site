@@ -2,89 +2,130 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
+// import { Modal } from "@/app/components/common/modal";
+// import FormConversion from "./form-conversion/form-conver";
+
+// arriba del componente
+const OVERLAY_BY_THEME: Record<string, string> = {
+  neonatales: "from-sky-900/85 via-sky-700/45 to-transparent",
+  perinatal: "from-rose-900/85 via-rose-700/45 to-transparent",
+  default: "from-primary/85 via-primary/55 to-transparent",
+};
 
 const slides = [
   {
-    image: "/assets/hero/thales1.webp",
+    image: "/assets/hero/thales-hero.webp",
+    mobileImage: "/assets/hero/Thales-movil.webp",
     subtitle: "Excelencia Académica",
-    title: "Conecta saberes transforma realidades.",
+    title: "Conecta saberes transforma realidades",
     description:
       "En el Instituto Thales unimos ciencia, arte y humanidades para formar mentes críticas, creativas y conscientes del mundo que habitan. Porque aprender no es acumular conocimiento, sino iluminar la realidad desde nuevas perspectivas.",
     primaryButton: {
       text: "Explorar Oferta Educativa",
-      href: "/oferta-educativa",
+      href: "#oferta-diplomados",
     },
     secondaryButton: { text: "Conoce UNSZA", href: "/about-us" },
+    theme: "default",
   },
   {
     image: "/assets/hero/child-hospital.webp",
-    subtitle: "Educación en Salud",
-    title: "Diplomado Integral en Urgencias Pediátricas",
+    subtitle: "Diseño gráfico",
+    title: "Diplomado Composición Digital y Efectos Visuales",
     description:
-      "Formación integral para el abordaje oportuno y humano de las urgencias pediátricas. Dirigido a profesionales y cuidadores que buscan actuar con conocimiento, ética y sensibilidad ante cada emergencia infantil.",
-    primaryButton: { text: "Ver Diplomado", href: "/oferta-educativa" },
-    secondaryButton: { text: "Inscríbete Ahora", href: "#cta" },
+      "Enfocado en los principios y técnicas de la composición digital y los efectos visuales, integrando herramientas profesionales y procesos utilizados en la industria audiovisual para la creación y postproducción de imágenes.",
+    primaryButton: { text: "Saber más", href: "#cta" },
+    // secondaryButton: { text: "Saber más", href: "#cta" },
+    theme: "neonatales",
   },
   {
     image: "/assets/hero/perinatal.webp",
-    subtitle: "Ciencia y Bienestar",
-    title: "Diplomado en Psicología Perinatal",
+    subtitle: "Salud y Bienestar",
+    title: "Diplomado en Nutrición Ginecológica y Salud Hormonal Femenina",
     description:
       "Formación especializada en evaluación, prevención e intervención psicológica durante el embarazo, parto y posparto. Desarrolla competencias clínicas y humanas para promover vínculos sanos y bienestar perinatal.",
-    primaryButton: { text: "Más Información", href: "/oferta-educativa" },
-    secondaryButton: { text: "Inscríbete", href: "#cta" },
+    primaryButton: { text: "Más Información", href: "#cta" },
+    // secondaryButton: { text: "Inscríbete", href: "#cta" },
+    theme: "perinatal",
+  },
+  //
+  {
+    image: "/assets/hero/perinatal.webp",
+    subtitle: "Salud y Bienestar",
+    title: "Diplomado en Seguridad e Higiene Industrial",
+    description:
+      "Diplomado orientado al estudio de los principios, normas y prácticas de seguridad e higiene industrial, enfocado en la prevención de riesgos laborales y la promoción de entornos de trabajo seguros.",
+    primaryButton: { text: "Más Información", href: "#cta" },
+    // secondaryButton: { text: "Inscríbete", href: "#cta" },
+    theme: "perinatal",
   },
 ];
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
+  // const [open, setOpen] = useState<boolean>(false);
   const hovering = useRef(false);
 
   // Auto-advance (pausa al hacer hover sobre el hero)
   useEffect(() => {
     const id = setInterval(() => {
       if (!hovering.current) setCurrent((p) => (p + 1) % slides.length);
-    }, 8000);
+    }, 7000);
     return () => clearInterval(id);
-  }, []);
+  }, [current]);
 
   const goTo = (i: number) => setCurrent(i);
   const next = () => setCurrent((p) => (p + 1) % slides.length);
   const prev = () => setCurrent((p) => (p - 1 + slides.length) % slides.length);
-
+  const reduceMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // console.log(reduceMotion);
   return (
     <div
-      className="relative w-full min-h-[80vh] md:min-h-screen flex items-center justify-center bg-primary text-white overflow-hidden"
+      className="relative w-full min-h-[90vh] md:min-h-screen flex items-center justify-center bg-primary text-white overflow-hidden"
       onMouseEnter={() => (hovering.current = true)}
       onMouseLeave={() => (hovering.current = false)}
     >
       {/* Fondo slider */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={current}
-          className="absolute inset-0"
-          initial={{ opacity: 0, scale: 1.01 }} // <= menos upscale
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.99 }}
-          transition={{ duration: 0.7, ease: "easeInOut" }}
-        >
-          <Image
-            src={slides[current].image}
-            alt={slides[current].title}
-            fill
-            priority
-            quality={90} // <= más nitidez
-            sizes="100vw" // <= describe el ancho real ocupado
-            className="absolute inset-0 object-cover object-[70%_center] pointer-events-none transform-gpu will-change-transform"
-          />
+      {/* <AnimatePresence mode="wait"> */}
+      {/* <AnimatePresence mode="wait"> */}
+      <div key={current} className="absolute inset-0">
+        {/* Mobile (vertical / alto) */}
+        <Image
+          src={slides[current].mobileImage ?? slides[current].image}
+          alt={slides[current].title}
+          fill
+          priority={current === 0}
+          quality={100}
+          sizes="(max-width:480px) 2048px, (max-width:768px) 2560px, 100vw"
+          className="md:hidden absolute inset-0 object-cover object-center"
+        />
 
-          {/* Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/55 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-primary/50 to-transparent pointer-events-none" />
-        </motion.div>
-      </AnimatePresence>
+        {/* Desktop (horizontal) */}
+        <Image
+          src={slides[current].image}
+          alt={slides[current].title}
+          fill
+          priority={current === 0}
+          quality={100}
+          sizes="100vw"
+          className="hidden md:block absolute inset-0 object-cover md:object-[90%_center] object-center"
+        />
+
+        {/* Overlays */}
+        <div
+          className={`absolute inset-0 bg-gradient-to-r ${
+            OVERLAY_BY_THEME[slides[current].theme]
+          } pointer-events-none`}
+        />
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/55 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_58%,rgba(0,0,0,0.28)_100%)] pointer-events-none" />
+      </div>
+      {/* </AnimatePresence> */}
+
+      {/* </AnimatePresence> */}
 
       {/* Contenido (mismo layout) */}
       <div className="relative mx-auto w-full max-w-7xl px-6 pt-28 pb-16">
@@ -94,20 +135,13 @@ export default function Hero() {
             key={`content-${current}`}
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.6,
+              ease: [0.65, 0, 0.35, 1],
+            }}
             className="lg:col-span-6"
           >
-            {/* Subtítulo dinámico */}
-            {/* <motion.h5
-              className="text-white/90 text-sm md:text-base lg:text-lg uppercase tracking-widest font-medium mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              {slides[current].subtitle}
-            </motion.h5> */}
-
-            <h1 className="font-bold leading-tight mb-6 text-[clamp(2rem,6vw,4.5rem)]">
+            <h1 className="font-bold leading-tight mb-4 text-[clamp(2rem,6vw,4.2rem)] drop-shadow-[0_1px_1px_rgba(0,0,0,0.75)]">
               {slides[current].title.split("\n").map((line, i) => (
                 <span key={i}>
                   {line}
@@ -117,7 +151,7 @@ export default function Hero() {
             </h1>
 
             <motion.p
-              className="text-white/90 text-lg md:text-xl lg:text-2xl leading-relaxed mb-8 max-w-3xl"
+              className="text-white/95 text-lg md:text-xl lg:text-2xl leading-relaxed mb-7 max-w-2xl drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -133,7 +167,11 @@ export default function Hero() {
             >
               <Link
                 href={slides[current].primaryButton.href}
-                className="group inline-flex items-center gap-3 rounded-full bg-secondary px-6 py-3 text-secondary-foreground font-semibold shadow-md hover:shadow-lg transition"
+                prefetch={false}
+                className="group inline-flex items-center gap-3 rounded-full bg-secondary px-6 py-3
+             text-secondary-foreground font-semibold shadow-md hover:shadow-lg hover:bg-secondary/90
+             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70
+             focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 transition"
               >
                 {slides[current].primaryButton.text}
                 <svg
@@ -150,17 +188,21 @@ export default function Hero() {
                   />
                 </svg>
               </Link>
-
-              {/* Secundario (opcional) */}
-              {/* <Link
-                href={slides[current].secondaryButton.href}
-                className="inline-block px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm text-white font-semibold border border-white/30 hover:bg-white/20 hover:border-white/50 transition"
-              >
-                {slides[current].secondaryButton.text}
-              </Link> */}
             </motion.div>
           </motion.div>
-
+          {/* <svg
+                  className="h-5 w-5 transition-transform group-hover:translate-x-1"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg> */}
           {/* Columna derecha para balance (se mantiene vacía) */}
           <div className="lg:col-span-6" />
         </div>
@@ -202,61 +244,36 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3"
         >
-          {/* <button
-            // href={`#`}
-            className="relative h-32 rounded-lg overflow-hidden cursor-pointer"
+          <Link
+            href="https://wa.link/lj52bn"
+            target="_blank"
+            className="relative h-32 rounded-lg overflow-hidden cursor-pointer group mt-12"
+            // onClick={() => setOpen(true)}
           >
-            <div className="absolute inset-0 bg-white/10 backdrop-blur-sm" />
+            {/* Fondo base más legible */}
+            <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm ring-1 ring-white/15 transition-all duration-500 group-hover:bg-slate-900/70" />
+
+            {/* Efecto de barrido */}
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out" />
+
+            {/* Contenido */}
             <div className="relative z-10 flex h-full items-center p-6">
-              <p className="text-white/90 font-medium">
+              <p className="text-white font-medium text-xl drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
                 Tu próximo logro comienza aquí. Contacta con nosotros
               </p>
             </div>
-          </button> */}
-          <button className="relative h-32 rounded-lg overflow-hidden cursor-pointer group">
-            {/* Fondo base */}
-            <div className="absolute inset-0 bg-white/10 backdrop-blur-sm transition-all duration-500 group-hover:bg-white/20" />
-
-            {/* Efecto de barrido */}
-            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out" />
-
-            {/* Contenido */}
-            <div className="relative z-10 flex h-full items-center p-6">
-              <p className="text-white/90 font-medium">
-                Tu próximo logro comienza aquí. Contacta con nosotros
-              </p>
-            </div>
-          </button>
-          <button className="relative h-32 rounded-lg overflow-hidden cursor-pointer group">
-            {/* Fondo base */}
-            <div className="absolute inset-0 bg-white/10 backdrop-blur-sm transition-all duration-500 group-hover:bg-white/20" />
-
-            {/* Efecto de barrido */}
-            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out" />
-
-            {/* Contenido */}
-            <div className="absolute inset-0 bg-white/10 backdrop-blur-sm" />
-            <div className="relative z-10 flex h-full items-center p-6">
-              <p className="text-white/90 font-medium">Conocenos</p>
-            </div>
-          </button>
-          <button className="relative h-32 rounded-lg overflow-hidden cursor-pointer group">
-            {/* Fondo base */}
-            <div className="absolute inset-0 bg-white/10 backdrop-blur-sm transition-all duration-500 group-hover:bg-white/20" />
-
-            {/* Efecto de barrido */}
-            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out" />
-
-            {/* Contenido */}
-            <div className="absolute inset-0 bg-white/10 backdrop-blur-sm" />
-            <div className="relative z-10 flex h-full items-center p-6">
-              <p className="text-white/90 font-medium">
-                Conoce nuestra oferta educativa
-              </p>
-            </div>
-          </button>
+          </Link>
         </motion.div>
       </div>
+      {/* <Modal show={open} onClose={() => setOpen(false)}>
+        <div
+          className="    bg-slate-900/65 backdrop-blur-md
+    ring-1 ring-white/10 shadow-2xl
+    border border-white/5"
+        >
+          <FormConversion />
+        </div>
+      </Modal> */}
     </div>
   );
 }

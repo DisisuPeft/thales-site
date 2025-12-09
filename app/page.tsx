@@ -1,13 +1,23 @@
-import Header from "./ui/landing/header";
-import Hero from "./ui/landing/hero";
+import Header from "./ui/landing-cinfa/header";
+import HeroSection from "./ui/landing-cinfa/hero";
+import AboutCINFA from "./ui/landing-cinfa/about-cinfa";
+import AcademicModel from "./ui/landing-cinfa/academic-model";
+import InstitutesPreview from "./ui/landing-cinfa/institutos";
+import WhyCINFA from "./ui/landing-cinfa/why-cinfa";
+import CallToAction from "./ui/landing-cinfa/call-to-action";
+import Footer from "./ui/landing-cinfa/footer";
 
-export default function Home() {
+export default function Page() {
   return (
-    <div className="flex flex-col min-h-screen bg-white font-sans">
+    <main className="min-h-screen font-sans">
       <Header />
-      <main className="flex flex-col flex-1 w-full">
-        <Hero />
-      </main>
-    </div>
+      <HeroSection />
+      <AboutCINFA />
+      <AcademicModel />
+      <InstitutesPreview />
+      <WhyCINFA />
+      <CallToAction />
+      <Footer />
+    </main>
   );
 }

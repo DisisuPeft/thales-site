@@ -5,7 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 
 export default function Header() {
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <>
@@ -14,7 +14,8 @@ export default function Header() {
         <div className="max-w-7xl mx-auto">
           <div className="bg-white rounded-full shadow-lg px-4 md:px-6 py-3 flex items-center justify-between">
             {/* Logo */}
-            <motion.div
+            <motion.a
+              href="/instituto-thales"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
@@ -26,21 +27,22 @@ export default function Header() {
                 height={40}
                 width={40}
               />
-              <span className="text-lg md:text-xl font-bold text-secondary">
+              <span className="text-lg md:text-xl font-bold text-primary">
                 Instituto Thales
               </span>
-            </motion.div>
+            </motion.a>
 
             {/* Desktop Navigation Items */}
             <div className="hidden lg:flex items-center gap-4 xl:gap-6">
-              <motion.button
+              <motion.a
+                href="#quienes-somos"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="flex items-center gap-2 text-primary hover:text-secondary transition-colors text-sm xl:text-base"
+                className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors text-sm xl:text-base"
               >
                 <span className="font-medium">Descubre</span>
-                <svg
+                {/* <svg
                   className="w-4 h-4"
                   fill="none"
                   stroke="currentColor"
@@ -52,17 +54,18 @@ export default function Header() {
                     strokeWidth={2}
                     d="M19 9l-7 7-7-7"
                   />
-                </svg>
-              </motion.button>
+                </svg> */}
+              </motion.a>
 
-              <motion.button
+              <motion.a
+                href="#oferta-educativa"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex items-center gap-2 text-primary hover:text-secondary transition-colors text-sm xl:text-base"
+                className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors text-sm xl:text-base"
               >
-                <span className="font-medium">Instituciones</span>
-                <svg
+                <span className="font-medium">Nuestros Diplomados</span>
+                {/* <svg
                   className="w-4 h-4"
                   fill="none"
                   stroke="currentColor"
@@ -74,8 +77,8 @@ export default function Header() {
                     strokeWidth={2}
                     d="M19 9l-7 7-7-7"
                   />
-                </svg>
-              </motion.button>
+                </svg> */}
+              </motion.a>
 
               {/* <motion.div
                 initial={{ opacity: 0, y: -10 }}
@@ -116,20 +119,22 @@ export default function Header() {
                 Crear cuenta
               </motion.button> */}
 
-              <motion.button
+              <motion.a
+                href="https://wa.link/lj52bn"
+                target="_blank"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="px-4 xl:px-6 py-2 border-2 border-primary text-gray-700 rounded-full font-medium hover:border-secondary hover:text-secondary transition-colors text-sm xl:text-base"
+                className="px-4 xl:px-6 py-2 border-2 border-primary text-gray-700 rounded-full font-medium hover:border-primary/80 hover:text-primary/80 transition-colors text-sm xl:text-base"
               >
-                Iniciar sesión
-              </motion.button>
+                Contacto
+              </motion.a>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-gray-700 hover:text-purple-700 transition-colors"
+              className="lg:hidden p-2 text-gray-700 hover:text-primary/80 transition-colors"
             >
               <svg
                 className="w-6 h-6"
@@ -163,7 +168,7 @@ export default function Header() {
               animate={{ opacity: 1, y: 0 }}
               className="lg:hidden mt-4 bg-white rounded-2xl shadow-lg p-6 space-y-4"
             >
-              <div className="relative">
+              {/* <div className="relative">
                 <input
                   type="text"
                   placeholder="¿Qué tema te interesa?"
@@ -186,17 +191,17 @@ export default function Header() {
                     />
                   </svg>
                 </button>
-              </div>
-              <button className="w-full text-left px-4 py-2 text-gray-700 hover:text-purple-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">
+              </div> */}
+              <button className="cursor-pointer w-full text-left px-4 py-2 text-gray-700 hover:text-secondary hover:bg-gray-200 rounded-lg transition-colors font-medium">
                 Descubre
               </button>
-              <button className="w-full text-left px-4 py-2 text-gray-700 hover:text-purple-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">
-                Instituciones
+              <button className="cursor-pointer w-full text-left px-4 py-2 text-gray-700 hover:text-secondary hover:bg-gray-200 rounded-lg transition-colors font-medium">
+                <span className="font-medium">Nuestra institución</span>
               </button>
-              <button className="w-full px-4 py-2 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors">
+              {/* <button className="w-full px-4 py-2 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors">
                 Crear cuenta
-              </button>
-              <button className="w-full px-4 py-2 border-2 border-gray-300 text-gray-700 rounded-full font-medium hover:border-purple-600 hover:text-purple-600 transition-colors">
+              </button> */}
+              <button className="cursor-pointer w-full px-4 py-2 border-2 border-gray-300 text-gray-700 rounded-full font-medium hover:border-secondary hover:text-secondary transition-colors">
                 Iniciar sesión
               </button>
             </motion.div>
