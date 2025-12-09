@@ -23,12 +23,12 @@ export default function Header() {
           {/* Logo */}
           <Link href="/iesda" className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg flex items-center justify-center">
-              {/* <Image
-                src="/assets/logos/Logo CINFA-01.webp"
+              <Image
+                src="/assets/logos/iesdalogo.webp"
                 alt="Logo CINFA"
                 width={40}
                 height={40}
-              /> */}
+              />
             </div>
             <span className="text-foreground font-semibold text-lg tracking-tight">
               IESDA

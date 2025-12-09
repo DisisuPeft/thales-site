@@ -30,33 +30,33 @@ const slides = [
     theme: "default",
   },
   {
-    image: "/assets/hero/child-hospital.webp",
+    image: "/assets/diplomados/thales/COMPOSICION-DIGITAL.webp",
     subtitle: "Diseño gráfico",
     title: "Diplomado Composición Digital y Efectos Visuales",
     description:
       "Enfocado en los principios y técnicas de la composición digital y los efectos visuales, integrando herramientas profesionales y procesos utilizados en la industria audiovisual para la creación y postproducción de imágenes.",
-    primaryButton: { text: "Saber más", href: "#cta" },
+    primaryButton: { text: "Saber más", href: "https://wa.link/o9gru5" },
     // secondaryButton: { text: "Saber más", href: "#cta" },
     theme: "neonatales",
   },
   {
-    image: "/assets/hero/perinatal.webp",
+    image: "/assets/diplomados/thales/Nutricionginecologica.webp",
     subtitle: "Salud y Bienestar",
     title: "Diplomado en Nutrición Ginecológica y Salud Hormonal Femenina",
     description:
       "Formación especializada en evaluación, prevención e intervención psicológica durante el embarazo, parto y posparto. Desarrolla competencias clínicas y humanas para promover vínculos sanos y bienestar perinatal.",
-    primaryButton: { text: "Más Información", href: "#cta" },
+    primaryButton: { text: "Más Información", href: "https://wa.link/bn88h3" },
     // secondaryButton: { text: "Inscríbete", href: "#cta" },
     theme: "perinatal",
   },
   //
   {
-    image: "/assets/hero/perinatal.webp",
+    image: "/assets/diplomados/thales/Seguridadehigieneindustrial (1).webp",
     subtitle: "Salud y Bienestar",
     title: "Diplomado en Seguridad e Higiene Industrial",
     description:
       "Diplomado orientado al estudio de los principios, normas y prácticas de seguridad e higiene industrial, enfocado en la prevención de riesgos laborales y la promoción de entornos de trabajo seguros.",
-    primaryButton: { text: "Más Información", href: "#cta" },
+    primaryButton: { text: "Más Información", href: "https://wa.link/8jmvlr" },
     // secondaryButton: { text: "Inscríbete", href: "#cta" },
     theme: "perinatal",
   },
@@ -167,6 +167,7 @@ export default function Hero() {
             >
               <Link
                 href={slides[current].primaryButton.href}
+                target="_blank"
                 prefetch={false}
                 className="group inline-flex items-center gap-3 rounded-full bg-secondary px-6 py-3
              text-secondary-foreground font-semibold shadow-md hover:shadow-lg hover:bg-secondary/90

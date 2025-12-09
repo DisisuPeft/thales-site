@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export function Footer() {
   return (
@@ -40,19 +41,31 @@ export function Footer() {
             </h4>
             <ul className="space-y-3">
               {[
-                "Oferta académica",
-                "Proceso de admisión",
-                "Calendario académico",
-                "Reglamento institucional",
+                {
+                  name: "Oferta académica",
+                  link: "#diplomados-iesda",
+                },
+                // {
+                //   name: "Proceso de admisión",
+                //   link: "#proceso-admision",
+                // },
+                // {
+                //   name: "Calendario académico",
+                //   link: "#calendario-academico",
+                // },
+                // {
+                //   name: "Reglamento institucional",
+                //   link: "#reglamento-institucional",
+                // },
               ].map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
+                <li key={link.name}>
+                  <Link
+                    href={link.link}
                     className="text-sm hover:underline transition-colors"
                     style={{ color: "#7D8EA3" }}
                   >
-                    {link}
-                  </a>
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -67,10 +80,8 @@ export function Footer() {
               Contacto
             </h4>
             <ul className="space-y-3 text-sm" style={{ color: "#7D8EA3" }}>
-              <li>informes@iesda.edu</li>
-              <li>+52 (55) 1234 5678</li>
-              <li>Av. Educación Superior 100</li>
-              <li>Ciudad de México, México</li>
+              <li>iesda.informes@gmail.com</li>
+              <li>+52 (961) 398 6294</li>
             </ul>
           </div>
         </motion.div>

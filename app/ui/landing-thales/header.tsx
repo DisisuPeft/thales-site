@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   // const [searchQuery, setSearchQuery] = useState("");
@@ -58,7 +59,7 @@ export default function Header() {
               </motion.a>
 
               <motion.a
-                href="#oferta-educativa"
+                href="#oferta-diplomados"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
@@ -166,7 +167,7 @@ export default function Header() {
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="lg:hidden mt-4 bg-white rounded-2xl shadow-lg p-6 space-y-4"
+              className="lg:hidden mt-4 bg-white rounded-2xl shadow-lg p-6 space-y-4 flex flex-col"
             >
               {/* <div className="relative">
                 <input
@@ -192,18 +193,28 @@ export default function Header() {
                   </svg>
                 </button>
               </div> */}
-              <button className="cursor-pointer w-full text-left px-4 py-2 text-gray-700 hover:text-secondary hover:bg-gray-200 rounded-lg transition-colors font-medium">
+              <Link
+                href="#quienes-somos"
+                className="cursor-pointer w-full text-left px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-200 rounded-lg transition-colors font-medium"
+              >
                 Descubre
-              </button>
-              <button className="cursor-pointer w-full text-left px-4 py-2 text-gray-700 hover:text-secondary hover:bg-gray-200 rounded-lg transition-colors font-medium">
-                <span className="font-medium">Nuestra institución</span>
-              </button>
+              </Link>
+              <Link
+                href="#oferta-diplomados"
+                className="cursor-pointer w-full text-left px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-200 rounded-lg transition-colors font-medium"
+              >
+                <span className="font-medium">Nuestros Diplomados</span>
+              </Link>
               {/* <button className="w-full px-4 py-2 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors">
                 Crear cuenta
               </button> */}
-              <button className="cursor-pointer w-full px-4 py-2 border-2 border-gray-300 text-gray-700 rounded-full font-medium hover:border-secondary hover:text-secondary transition-colors">
-                Iniciar sesión
-              </button>
+              <Link
+                href="https://wa.link/lj52bn"
+                target="_blank"
+                className="cursor-pointer w-full px-4 py-2 border-2 border-gray-300 text-gray-700 rounded-full font-medium hover:border-primary hover:text-primary transition-colors"
+              >
+                Contacto
+              </Link>
             </motion.div>
           )}
         </div>

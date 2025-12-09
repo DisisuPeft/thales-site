@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const programs = [
   {
@@ -8,22 +9,30 @@ const programs = [
     // duration: "3 años",
     description:
       "Orientado a la formación especializada en enfermería nefrológica, con énfasis en los procesos de hemodiálisis y el cuidado integral de los accesos vasculares, integrando fundamentos clínicos, técnicos y humanizados en la atención al paciente.",
+    image: "/assets/diplomados/iesda/Enfermeríanefrologica.webp",
   },
   {
     name: "Enfermería Pericial y Registros Clínicos",
     // duration: "2 años",
     description:
       "Orientado a la formación en enfermería pericial y el correcto manejo de los registros clínicos, con énfasis en la documentación profesional, el sustento legal de la práctica y la atención conforme a criterios éticos y normativos.",
+    image: "/assets/diplomados/iesda/Enfermeríapericiall.webp",
   },
   {
     name: "Urgencias Pediátricas",
     // duration: "2 años",
     description:
       "Orientado al estudio y abordaje de las urgencias pediátricas, enfocado en la identificación oportuna, valoración inicial y atención adecuada de situaciones críticas en pacientes pediátricos, bajo criterios clínicos y éticos.",
+    image: "/assets/diplomados/iesda/URGENCIA-PEDIATRICAS.webp",
   },
 ];
 
 export function Programs() {
+  const getWaLink = (programName: string) => {
+    const phone = "529613986294";
+    const message = `Hola, me gustaría recibir más información sobre el diplomado: ${programName}.`;
+    return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  };
   return (
     <section
       id="diplomados-iesda"
@@ -67,35 +76,55 @@ export function Programs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white rounded-lg p-8 hover:shadow-md transition-shadow duration-300"
+              className="bg-white rounded-lg overflow-hidden hover:shadow-md transition-shadow duration-300"
             >
-              <div className="flex items-start justify-between mb-4">
-                <h3
-                  className="text-lg font-medium pr-4"
-                  style={{ color: "#3A3A3A" }}
+              {/* IMAGE */}
+              {program.image && (
+                <div className="w-full h-[300px] overflow-hidden">
+                  <Image
+                    src={program.image}
+                    alt={program.name}
+                    className="w-full h-full object-cover"
+                    width={500}
+                    height={500}
+                    quality={100}
+                  />
+                </div>
+              )}
+
+              {/* CONTENT */}
+              <div className="p-8">
+                <div className="flex items-start justify-between mb-4">
+                  <h3
+                    className="text-lg font-medium pr-4"
+                    style={{ color: "#3A3A3A" }}
+                  >
+                    {program.name}
+                  </h3>
+                </div>
+
+                <div
+                  className="w-8 h-0.5 mb-4"
+                  style={{ backgroundColor: "#D7A22A" }}
+                />
+
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{ color: "#7D8EA3" }}
                 >
-                  {program.name}
-                </h3>
-                {/* <span
-                  className="text-sm px-3 py-1 rounded-full whitespace-nowrap"
-                  style={{
-                    backgroundColor: "#F8F2E9",
-                    color: "#7D8EA3",
-                  }}
+                  {program.description}
+                </p>
+                <a
+                  href={getWaLink(program.name)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center mt-6 text-sm font-medium transition-colors"
+                  style={{ color: "#1FBAC4" }}
                 >
-                  {program.duration}
-                </span> */}
+                  Saber más
+                  <span className="ml-2">→</span>
+                </a>
               </div>
-              <div
-                className="w-8 h-0.5 mb-4"
-                style={{ backgroundColor: "#D7A22A" }}
-              />
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: "#7D8EA3" }}
-              >
-                {program.description}
-              </p>
             </motion.div>
           ))}
         </div>

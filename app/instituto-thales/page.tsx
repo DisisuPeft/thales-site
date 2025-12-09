@@ -8,7 +8,7 @@ import Footer from "../ui/landing-thales/footer";
 
 export default function Page() {
   return (
-    <div className="flex flex-col min-h-screen bg-[linear-gradient(135deg,#1E3A5F_0%,#1F6F8A_45%,#1FBAC4_100%)] font-sans">
+    <div className="flex flex-col min-h-screen bg-[linear-gradient(135deg,#1E3A5F_0%,#1F6F8A_45%)] font-sans">
       <Header />
       <main className="flex flex-col flex-1 w-full">
         <Hero />

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
+import Image from "next/image";
 import { useRef } from "react";
 
 export default function AboutCINFA() {
@@ -72,10 +73,14 @@ export default function AboutCINFA() {
             className="relative"
           >
             <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-muted">
-              <img
-                src="/professional-academic-classroom-with-diverse-stude.jpg"
+              <Image
+                src="/assets/photos/joven-escuchando-musica-durante-la-sesion-de-estudio.webp"
                 alt="Estudiantes en aula moderna de CINFA"
                 className="w-full h-full object-cover"
+                width={500}
+                height={500}
+                quality={100}
+                priority
               />
             </div>
             <div className="absolute -bottom-6 -left-6 bg-card p-6 rounded-xl shadow-lg border border-border">

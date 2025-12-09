@@ -10,21 +10,24 @@ export default function OfertaEducativaPage() {
       nombre: "Diplomado Composición Digital y Efectos Visuales",
       descripcion:
         "Enfocado en los principios y técnicas de la composición digital y los efectos visuales, integrando herramientas profesionales y procesos utilizados en la industria audiovisual para la creación y postproducción de imágenes.",
-      imagen: "/assets/diplomados/URGENCIA-PEDIATRICAS.webp",
+      imagen: "/assets/diplomados/thales/COMPOSICION-DIGITAL.webp",
+      href: "https://wa.link/o9gru5",
     },
     {
       id: 2,
       nombre: "Diplomado en Nutrición Ginecológica y Salud Hormonal Femenina",
       descripcion:
         "Formación especializada en evaluación, prevención e intervención psicológica durante el embarazo, parto y posparto. Desarrolla competencias clínicas y humanas para promover vínculos sanos y bienestar perinatal.",
-      imagen: "/assets/diplomados/perinatal.webp",
+      imagen: "/assets/diplomados/thales/Nutricionginecologica.webp",
+      href: "https://wa.link/bn88h3",
     },
     {
       id: 3,
       nombre: "Diplomado en Seguridad e Higiene Industrial",
       descripcion:
         "Diplomado orientado al estudio de los principios, normas y prácticas de seguridad e higiene industrial, enfocado en la prevención de riesgos laborales y la promoción de entornos de trabajo seguros.",
-      imagen: "/assets/diplomados/perinatal.webp",
+      imagen: "/assets/diplomados/thales/Seguridadehigieneindustrial (1).webp",
+      href: "https://wa.link/8jmvlr",
     },
   ];
 
@@ -139,7 +142,9 @@ export default function OfertaEducativaPage() {
                     </p>
 
                     {/* Button */}
-                    <motion.button
+                    <motion.a
+                      href={diplomado.href}
+                      target="_blank"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       className="w-full py-3 rounded-lg font-medium text-sm sm:text-base transition-all duration-300 shadow-md"
@@ -149,8 +154,26 @@ export default function OfertaEducativaPage() {
                         border: "none",
                       }}
                     >
-                      Saber más
-                    </motion.button>
+                      <div className="flex items-center justify-center">
+                        <span className="flex justify-center text-center text-lg items-center">
+                          Saber más
+                        </span>
+                        <svg
+                          className="w-6 h-6 ml-2"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </div>
+                    </motion.a>
                   </div>
                 </div>
               </motion.div>

@@ -8,12 +8,12 @@ import Link from "next/link";
 const diplomas = [
   {
     title: "Instituto Thales",
-    image: "/institute-management-academic.jpg",
+    image: "/assets/logos/logo-thales.svg",
     path: "/instituto-thales",
   },
   {
     title: "Instituto de Educación Superior y Desarrollo Académico",
-    image: "/institute-digital-communication.jpg",
+    image: "/assets/logos/iesdalogo.webp",
     path: "/iesda",
   },
 ];
@@ -66,6 +66,11 @@ export default function InstitutesPreview() {
                   alt={diploma.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-semibold text-foreground">
+                  {diploma.title}
+                </h3>
               </div>
               <div className="p-6">
                 <Link
