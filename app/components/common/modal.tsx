@@ -22,10 +22,10 @@ export const Modal: React.FC<ModalProps> = ({
   transparent = false,
   children,
 }) => {
-  const [isMounted, setIsMounted] = useState<boolean>(true);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
 
   useEffect(() => {
-    // setIsMounted(true);
+    setIsMounted(true);
     return () => setIsMounted(false);
   }, []);
 

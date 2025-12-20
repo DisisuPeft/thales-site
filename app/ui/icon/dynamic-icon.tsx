@@ -1,4 +1,4 @@
-import { iconMap } from "./icon";
+import { iconMap } from "./icon-map";
 
 type IconProps = {
   iconName: string;

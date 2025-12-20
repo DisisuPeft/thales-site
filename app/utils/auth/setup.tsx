@@ -8,7 +8,6 @@ import { Modal } from "@/app/components/common/modal";
 export default function Setup() {
   useVerify();
   const { isLoading } = useAppSelector((state) => state.auth);
-  // console.log(isLoading)
   return (
     <Modal show={isLoading} onClose={() => isLoading} transparent={true}>
       <Loading />
