@@ -22,17 +22,18 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/iesda" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg flex items-center justify-center">
+            <div className="w-[50px] h-[50px] rounded-lg flex items-center justify-center">
               <Image
                 src="/assets/logos/iesdalogo.webp"
-                alt="Logo CINFA"
-                width={40}
-                height={40}
+                alt="Logo IESDA"
+                width={50}
+                height={50}
+                loading="eager"
               />
             </div>
-            <span className="text-foreground font-semibold text-lg tracking-tight">
+            {/* <span className="text-foreground font-semibold text-lg tracking-tight">
               IESDA
-            </span>
+            </span> */}
           </Link>
 
           {/* Desktop Navigation */}

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   // comment to comments
@@ -17,12 +18,14 @@ export function Footer() {
         >
           {/* Brand */}
           <div>
-            <h3
-              className="text-xl font-medium mb-4"
-              style={{ color: "#F8F2E9" }}
-            >
-              IESDA
-            </h3>
+            <div className="w-[50px] h-[50px] rounded-lg flex items-center justify-center">
+              <Image
+                src="/assets/logos/iesdalogo.webp"
+                alt="Logo IESDA"
+                width={50}
+                height={50}
+              />
+            </div>
             <p className="text-sm leading-relaxed" style={{ color: "#7D8EA3" }}>
               Instituto de Educación Superior del Área de la Salud. Formación
               profesional con responsabilidad ética y compromiso humano.

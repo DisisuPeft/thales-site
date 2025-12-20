@@ -26,7 +26,7 @@ const baseQueryWithReauth: BaseQueryFn<
       try {
         const refreshResult = await baseQuery(
           {
-            url: "auth/refresh/",
+            url: "/auth/refresh/",
             method: "POST",
           },
           api,

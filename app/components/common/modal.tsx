@@ -22,10 +22,10 @@ export const Modal: React.FC<ModalProps> = ({
   transparent = false,
   children,
 }) => {
-  const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [isMounted, setIsMounted] = useState<boolean>(true);
 
   useEffect(() => {
-    setIsMounted(true);
+    // setIsMounted(true);
     return () => setIsMounted(false);
   }, []);
 
@@ -69,7 +69,7 @@ export const Modal: React.FC<ModalProps> = ({
   };
 
   if (!isMounted) return null;
-  //   console.log(transparent)
+
   return createPortal(
     <div
       role="dialog"
@@ -79,13 +79,10 @@ export const Modal: React.FC<ModalProps> = ({
       }`}
       onClick={onClose}
     >
-      {/* === Fondo del modal (solo una capa, control total aquí) === */}
       <div
         className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"
         aria-hidden="true"
       />
-
-      {/* === Contenido del modal === */}
       <div
         className={`relative z-10 w-full sm:mx-auto ${
           maxWidthClass[maxWidth]

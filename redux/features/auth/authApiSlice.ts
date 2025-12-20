@@ -4,11 +4,11 @@ import { User } from "../types/auth/auth-types";
 const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     retrieveUser: builder.query<User, void>({
-      query: () => "/auth/user/",
+      query: () => "/user/me/",
     }),
     login: builder.mutation({
       query: ({ email, password }) => ({
-        url: "/auth/login/",
+        url: "/auth/sign/",
         method: "POST",
         body: { email, password },
       }),

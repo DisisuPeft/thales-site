@@ -39,6 +39,6 @@ export type User = {
   id: number;
   email: string;
   profile: Profile;
-  roleID: Role[];
+  roles: Role[];
   permission: Permission[];
 };

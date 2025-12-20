@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+import Provider from "@/redux/provider";
+import Setup from "./utils/auth/setup";
+import AlertSystem from "./utils/alert/alert";
 
 export const metadata: Metadata = {
   title: "CINFA",
@@ -24,7 +17,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>{children}</body>
+      <body className={`font-sans antialiased`}>
+        <Provider>
+          <Setup />
+          <AlertSystem />
+          {children}
+        </Provider>
+      </body>
     </html>
   );
 }
