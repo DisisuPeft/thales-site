@@ -1,5 +1,5 @@
 import { apiSlice } from "@/redux/services/apiSlice";
-import { User } from "../types/auth/auth-types";
+import { Pestanias, User, UserVerifyResponse } from "../types/auth/auth-types";
 
 const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -32,6 +32,12 @@ const authApiSlice = apiSlice.injectEndpoints({
         method: "POST",
       }),
     }),
+    getPestania: builder.query<Pestanias[], string | null>({
+      query: (ref) => `/sistema/pestanias/?ref=${ref}`,
+    }),
+    verifyUser: builder.query<UserVerifyResponse, void>({
+      query: () => "/auth/roles/",
+    }),
   }),
 });
 
@@ -41,4 +47,6 @@ export const {
   useRegisterMutation,
   useVerifyMutation,
   useLogoutMutation,
+  useGetPestaniaQuery,
+  useVerifyUserQuery,
 } = authApiSlice;

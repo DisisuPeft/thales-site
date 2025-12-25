@@ -11,6 +11,7 @@ import {
   SchoolIcon,
   Building2,
   PiggyBank,
+  BookOpenTextIcon,
 } from "lucide-react";
 
 export const iconMap: Record<string, React.ElementType> = {
@@ -26,4 +27,5 @@ export const iconMap: Record<string, React.ElementType> = {
   "chalkboard-teacher": SchoolIcon,
   "building-two": Building2,
   "piggy-bank": PiggyBank,
+  "book-open-text": BookOpenTextIcon,
 };

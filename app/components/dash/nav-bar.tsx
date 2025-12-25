@@ -33,6 +33,7 @@ export default function Navbar() {
             alt="Logo CINFA"
             width={40}
             height={40}
+            loading="eager"
           />
         </div>
         <span className="text-foreground font-semibold text-lg tracking-tight">

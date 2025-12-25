@@ -1,3 +1,9 @@
+import ModulosGrid from "../components/dash/modulos-card";
+
 export default function Page() {
-  return <div>Hola</div>;
+  return (
+    <div>
+      <ModulosGrid />
+    </div>
+  );
 }

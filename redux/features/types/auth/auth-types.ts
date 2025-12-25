@@ -5,13 +5,13 @@ export type Permission = {
 
 export type Role = {
   id: number;
-  name: string;
+  nombre: string;
   permission: Permission[];
 };
 
 export type Genero = {
   id: number;
-  name: string;
+  nombre: string;
 };
 export type nivEdu = {
   id: number;
@@ -35,10 +35,32 @@ export type Profile = {
   user: number;
 };
 
-export type User = {
+export interface Modulos {
+  bgColor: string;
+  href: string;
+  icon: string;
+  nombre: string;
+  uuid: string;
+}
+
+export interface Pestanias {
+  href: string;
+  icon: string;
+  nombre: string;
+  uuid: string;
   id: number;
+}
+
+export type User = {
+  uuid: string;
+  nombre_completo: string;
   email: string;
-  profile: Profile;
+  modulos_accesibles: Modulos[];
+};
+
+//3 meses de venta
+
+export type UserVerifyResponse = {
   roles: Role[];
-  permission: Permission[];
+  superuser: boolean;
 };
